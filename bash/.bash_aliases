@@ -3,7 +3,7 @@ export PATH=$PATH:$HOME/opt
 export PATH=$PATH:~/.npm-global/bin
 
 # bindkey -s '^x^f' "tmux-sessionizer\n"
-bind -x '"/C-x/C-f":"tmux-sessionizer"'
+bind -x '"\C-x\C-f":"tmux-sessionizer"'
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
