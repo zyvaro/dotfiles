@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+if [ $# -eq 0 ]; then
+	echo "Usage: grabitpeg -ea=<1|0>"
+	exit 1
+fi
+
+for i in "$@"; do
+	case $i in
+		-ea=*|--enable-audio=*)
+			AUDIO_ENABLE="${i#*=}"
+			;;
+		*)
+			echo "Usage: grabitpeg -ea=<1|0>"
+			exit 1
+			;;
+	esac
+done
+
+echo -n "Output: "
+read FILENAME
+
+if [ "$AUDIO_ENABLE" = "0" ]; then
+	ffmpeg -video_size 1366x768 -framerate 30 -f x11grab -i :0.0 "$FILENAME"
+else
+	echo -n "Audio Card: "
+	read CARD
+	echo -n "Audio Device: "
+	read A_DEVICE
+
+	ffmpeg -video_size 1366x768 -framerate 30 -f x11grab -i :0.0 \
+		-f alsa -i plughw:"$CARD","$A_DEVICE" "$FILENAME"
+fi
+
