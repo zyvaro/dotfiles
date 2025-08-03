@@ -6,6 +6,8 @@ import XMonad.Hooks.StatusBar.PP
 
 import XMonad.Util.EZConfig
 import XMonad.Util.Loggers
+import XMonad.Util.Ungrab
+import XMonad.Util.SpawnOnce (spawnOnce)
 
 import XMonad.Layout.Tabbed
 import XMonad.Layout.StackTile
@@ -40,19 +42,25 @@ myXmobarPP = def
 
 main :: IO ()
 main = xmonad
-	 . withEasySB (statusBarProp "xmobar" (pure myXmobarPP)) defToggleStrutsKey
+	 . withEasySB (statusBarProp "xmobar ~/.config/xmonad/xmobarrc" (pure myXmobarPP)) defToggleStrutsKey
 	 $ myConfig
 
 myConfig = def
 	{ modMask = mod4Mask
 	, terminal = "alacritty"
 	, layoutHook = myLayout
+	, startupHook = myStartupHook
 	} 
 	`additionalKeysP`
     [ ("<XF86AudioRaiseVolume>", spawn "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+")
     , ("<XF86AudioLowerVolume>", spawn "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-")
 	, ("<XF86AudioMute>",        spawn "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle")
+    , ("M-C-s", unGrab *> spawn "scrot -s"        )
 	]
+
+myStartupHook :: X ()
+myStartupHook = do
+  spawnOnce "picom"
 
 myLayout = tiled ||| simpleTabbed ||| Mirror tiled ||| Full
   where
