@@ -13,7 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 10
+font pango:monospace 9
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -59,9 +59,9 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id dmenu_run
+# bindsym $mod+d exec --no-startup-id dmenu_run
 # A more modern dmenu replacement is rofi:
-# bindcode $mod+40 exec "rofi -modi drun,run -show drun"
+bindsym $mod+d exec "rofi -modi drun,run -show drun -show-icons"
 # There also is i3-dmenu-desktop which only displays applications shipping a
 # .desktop file. It is a wrapper around dmenu, so you need that installed.
 # bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
@@ -190,14 +190,19 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status
+	position top
+	status_command i3status
+	colors {
+		background #222222
+		statusline #22ffff
+	}
 }
 
 exec_always picom
-exec_always --no-startup-id feh --bg-max $HOME/Pictures/wallpapers/bright-pop-landscape-design.jpg
+exec_always --no-startup-id feh --bg-max $HOME/Pictures/wallpapers/kiminonawa_1.jpg
 
 # --- REMAP ---
 # Change to Print when using laptop
-bindsym $mod+F11 exec NOW=$(date +%d-%b-%Y_%H-%M-%S) && scrot -o $HOME/Pictures/screenshots/screenshot_$NOW.png
-bindsym $mod+Shift+F11 exec NOW=$(date +%d-%b-%Y_%H-%M-%S) && scrot -o $HOME/Pictures/screenshots/screenshot_$NOW.png && xclip -selection clip -t image/png ~/Pictures/screenshots/screenshot_$NOW.png && rm $HOME/Pictures/screenshots/screenshot_$NOW.png
-bindsym Ctrl+$mod+F11 exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
+bindsym --release $mod+F11 exec --no-startup-id NOW=$(date +%d-%b-%Y_%H-%M-%S) && scrot -s -o $HOME/Pictures/screenshots/screenshot_$NOW.png
+# bindsym $mod+Shift+F11 exec NOW=$(date +%d-%b-%Y_%H-%M-%S) && scrot -o $HOME/Pictures/screenshots/screenshot_$NOW.png && xclip -selection clip -t image/png ~/Pictures/screenshots/screenshot_$NOW.png && rm $HOME/Pictures/screenshots/screenshot_$NOW.png
+# bindsym Ctrl+$mod+F11 exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
