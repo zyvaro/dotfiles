@@ -201,7 +201,7 @@ exec_always ~/.config/i3/polybar_launch.sh
 default_border pixel 2
 
 exec_always picom --backend glx
-exec_always --no-startup-id feh --bg-max $HOME/Pictures/wallpapers/kamisato_ayaka.jpg
+exec_always --no-startup-id feh --bg-max $HOME/Pictures/wallpapers/chihiroandhaku.jpg
 
 # --- REMAP ---
 # Change to Print when using laptop
