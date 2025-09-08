@@ -1,0 +1,5 @@
+# export PATH=$PATH:/usr/local/go/bin
+# export PATH=$PATH:$HOME/opt
+# export PATH=$PATH:~/.npm-global/bin
+
+bindkey -s '^x^f' "tmux-sessionizer\n"
