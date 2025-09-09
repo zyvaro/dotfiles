@@ -19,13 +19,19 @@
 (setq display-line-numbers-type 'relative)
 
 (setq inhibit-startup-screen 0)
-;; (tool-bar-mode 0)
-;; (menu-bar-mode 0)
-;; (scroll-bar-mode 0)
+(tool-bar-mode 0)
+(menu-bar-mode 0)
+(scroll-bar-mode 0)
+
+;; c mode
+(setq-default c-basic-offset 4
+              tab-width 4
+              indent-tabs-mode t)
+
 
 ;; Set font
 (add-to-list 'default-frame-alist
-	     '(font . "UbuntuMono Nerd Font Mono-14"))
+	     '(font . "JetBrainsMono Nerd Font Mono-14"))
 
 ;; Move text
 (global-set-key (kbd "M-p") 'move-text-up)
