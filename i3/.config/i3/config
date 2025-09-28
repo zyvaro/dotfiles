@@ -197,10 +197,10 @@ bar {
 # default_border pixel 2
 
 exec_always picom --backend glx
-exec_always --no-startup-id feh --bg-max $HOME/Pictures/wallpapers/old_school_hello_c.jpg
+exec_always --no-startup-id feh --bg-max $HOME/Pictures/wallpapers/cyber_girl.jpg
 
 # --- REMAP ---
 # Change to Print when using laptop
-bindsym --release $mod+F11 exec --no-startup-id NOW=$(date +%d-%b-%Y_%H-%M-%S) && scrot -s -o $HOME/Pictures/screenshots/screenshot_$NOW.png && xclip -selection clipboard -t image/png $HOME/Pictures/screenshots/screenshot_$NOW.png
+bindsym --release $mod+F11 exec --no-startup-id NOW=$(date +%d-%b-%Y_%H-%M-%S) && scrot -s -o $HOME/Pictures/screenshots/screenshot_$NOW.png && xclip -selection clipboard -t image/png $HOME/Pictures/screenshots/screenshot_$NOW.png | xclip -selection clipboard -t image/png
 # bindsym $mod+Shift+F11 exec NOW=$(date +%d-%b-%Y_%H-%M-%S) && scrot -o $HOME/Pictures/screenshots/screenshot_$NOW.png && xclip -selection clip -t image/png ~/Pictures/screenshots/screenshot_$NOW.png && rm $HOME/Pictures/screenshots/screenshot_$NOW.png
 # bindsym Ctrl+$mod+F11 exec --no-startup-id maim --select | xclip -selection clipboard -t image/png

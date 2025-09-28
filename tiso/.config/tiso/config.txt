@@ -1,5 +1,5 @@
-fajr=5:55
-zuhur=13:19
-asr=16:45
-maghrib=19:28
-isha=20:43
+fajr=    5:59
+zuhur=   13:10
+asr=     16:11
+maghrib= 19:13
+isha=    20:22
